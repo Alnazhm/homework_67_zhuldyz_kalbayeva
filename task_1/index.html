@@ -11,23 +11,7 @@
         <input id="add-item-btn" type="button" value="+">
     
     </div>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous">
-</script>
-<script>
-let button = document.getElementById("add-item-btn");
-let container = document.getElementById("container");
-button.addEventListener('click', function(evt) {
-    let newDiv = document.createElement("div");
-    newDiv.innerHTML += `<div class="modalWindow" id="modalWindow" style="background-color: blue; width: 300px; height: 50px; text-align: center">
-    <span style="font-size: 15px;">Здравствуйте, модалка сама исчезнет через 5 секунд...</span>
-    <input class="exit" id="exit" type="button" value="Закрыть"></div>`;
-    container.append(newDiv);
-    setTimeout(() => newDiv.remove(), 5000);
-    document.getElementById("exit").addEventListener('click', () => newDiv.remove());
-})
 
-</script>
+<script src="main.js"></script>
 </body>
 </html>
