@@ -1,10 +1,10 @@
  let urlParams = new URLSearchParams(window.location.search);
     let param = urlParams.get('id');
     $.get(`https://www.breakingbadapi.com/api/characters/${param}`, function(data) {
-    let detailCard = $('<div class="card" style="width: 38rem;">\n' +
+    let detailCard = $('<div class="card" style="width: 60rem;">\n' +
         '  <img src="..." id="img" class="card-img-top" alt="actors">\n' +
         '  <div class="card-body">\n' +
-        '  <h2 class="card-text" id="keys" style="color: grey"></h2>\n' +
+        '  <h2 class="card-text" id="keys" style="color: black"></h2>\n' +
         '  </div>\n' +
         '</div>');
     $('#container-card').append(detailCard);
