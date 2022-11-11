@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container" id="container-card"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
+
+<script>
+    let urlParams = new URLSearchParams(window.location.search);
+    let param = urlParams.get('id');
+    $.get(`https://www.breakingbadapi.com/api/characters/${param}`, function(data) {
+    let detailCard = $('<div class="card" style="width: 38rem;">\n' +
+        '  <img src="..." id="img" class="card-img-top" alt="...">\n' +
+        '  <div class="card-body">\n' +
+        '  <h2 class="card-text" id="keys" style="color: grey"></h2>\n' +
+        '  </div>\n' +
+        '</div>');
+    $('#container-card').append(detailCard);
+    for (const [key, value] of Object.entries(data[0])) {
+        if(key != 'birthday'){
+            $('#keys').append(`${key}: ${value}<br>`);
+        }
+        else
+            if(key == 'birthday'){
+                if(data[0]['birthday'] == "Unknown") {
+                    $('#keys').append(`age: not defined<br>`);
+                }
+                else {
+                     let today = new Date();
+                let date = data[0]['birthday']
+                let birthYear = date.substring(6, )
+                let value = today.getFullYear() - birthYear;
+                $('#keys').append(`Age: ${value}<br>`);
+                }
+            }
+    }
+    $("#img").attr("src", `${data[0].img}`);
+})
+</script>
+</body>
+</html>
